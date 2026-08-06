@@ -60,4 +60,4 @@ Pastikan Anda menginstal aplikasi Termux dan Termux-X11 langsung dari repositori
 Jalankan satu baris perintah berikut di aplikasi **Termux**:
 
 ```bash
-pkg update && pkg upgrade -y && pkg install wget -y && wget [https://raw.githubusercontent.com/Fitunnel/fi-xfce/main/fi-xfceIns.sh](https://raw.githubusercontent.com/Fitunnel/fi-xfce/main/fi-xfceIns.sh) && chmod +x fi-xfceIns.sh && ./fi-xfceIns.sh
+pkg update && pkg upgrade -y && pkg install wget -y && wget https://raw.githubusercontent.com/Fitunnel/fi-xfce/main/fi-xfceIns.sh && chmod +x fi-xfceIns.sh && ./fi-xfceIns.sh
