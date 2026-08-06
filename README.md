@@ -1,6 +1,6 @@
 # 🚀 Fi-XFCE v2.9 - Termux XFCE4 & Wine Environment Installer
 
-Auto installer dan management tool untuk mengonfigurasi **XFCE4 Desktop Environment**, **Termux-X11**, dan **Wine (Hangover)** di Termux dengan kontrol akselerasi GPU interaktif.
+Auto installer dan management tool untuk mengonfigurasi **XFCE Desktop Environment**, **Termux-X11**, dan **Wine (Hangover)** di Termux dengan kontrol akselerasi GPU interaktif.
 
 ---
 
