@@ -6,8 +6,8 @@ Auto installer dan management tool untuk mengonfigurasi **XFCE Desktop Environme
 
 ## 📱 Kompatibilitas Versi Android
 
-- **Android 7.1.2 – Android 15**: Support Penuh (Dukungan optimal untuk sebagian besar arsitektur perangkat).
-- **Android 16 – 17+**: Support Terbatas / Eksperimental (Dukungan bergantung pada batasan keamanan API baru dan kebijakan sistem Android terbaru).
+- **Android 7.1.2 – Android 14**: Support Penuh (Dukungan optimal untuk sebagian besar arsitektur perangkat).
+- **Android 15+**: Support Terbatas / Eksperimental (Dukungan bergantung pada batasan keamanan API baru dan kebijakan sistem Android terbaru).
 
 ---
 
@@ -50,7 +50,7 @@ Pastikan Anda menginstal aplikasi Termux dan Termux-X11 langsung dari repositori
 
 * **Penyimpanan Minimum**:
   * **5 GB** bebas (instalasi dasar XFCE4).
-  * **15–20 GB** bebas (jika menginstal paket Wine/Hangover lengkap).
+  * **20+ GB** bebas (jika menginstal paket Wine/Hangover lengkap).
 * **Chipset**: Snapdragon (Adreno) atau MediaTek/Exynos/Kirin (Mali).
 
 ---
