@@ -87,7 +87,3 @@ fi-xfce
 Skrip ini dimodifikasi untuk Termux. Penggunaan Wine/Hangover di Android masih eksperimental dan performa tergantung device. Gunakan dengan bijak.
 
 Jika suka project ini, kasih ⭐ di repo!
-
-Tinggal copy ke `README.md` di repo kamu.
-
-Mau sekalian aku tambahin badge `GitHub release`, `License`, atau screenshot demo biar lebih menarik?
