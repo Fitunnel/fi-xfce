@@ -1,18 +1,17 @@
 #!/data/data/com.termux/files/usr/bin/bash
 #######################################################
-#  📱 AlfiStoreID XFCE Environment Installer v2.9 (Fixed)
+#  📱 AlfiStoreID XFCE Environment Installer v3.0
 #  
-#  Fitur & Catatan Perubahan (v2.9):
-#  - Pemisahan Akselerasi Grafis (GPU XFCE vs GPU Wine)
-#  - Mode Wine Graphics: Turnip Zink+Mesa (ON / OFF)
-#  - Auto-generate Desktop Launcher Shortcut untuk Switcher Wine GPU
-#  - Penjelasan teknis & keterangan lengkap setiap mode GPU
-#  - Integrasi script wine-turnip otomatis di $PREFIX/bin/wine-turnip
-#  - Branding konsisten & Pembersihan Bug v2.8
+#  Fitur & Catatan Perubahan (v3.0):
+#  - Penghapusan manager aplikasi yang tidak perlu
+#  - Perbaiki daemon dan ada perintah penutup
+#  - Penambahan telegram ke manager aplikasi
+#  - Perbaiki shortcut telegram ketika di jalankan
+#  - Fix Issue Android 15+ (Eksperimental)
 #  
 #  Pembuat : AlfiStoreID
 #  No WA   : 085223659782
-#  Versi   : 2.9 (Fixed Edition)
+#  Versi   : 3.0
 #######################################################
 
 # ============== KONFIGURASI ==============
@@ -86,12 +85,12 @@ install_pkg() {
 show_banner() {
     clear
     echo -e "${CYAN}┌──────────────────────────────────────────────────────────┐${NC}"
-    echo -e "${CYAN}│${WHITE}             🚀 AlfiStoreID XFCE v2.9 🚀                 ${CYAN}│${NC}"
+    echo -e "${CYAN}│${WHITE}             🚀 AlfiStoreID XFCE v3.0 🚀                 ${CYAN}│${NC}"
     echo -e "${CYAN}│${GRAY}        Desktop Environment Installer untuk Termux        ${CYAN}│${NC}"
     echo -e "${CYAN}└──────────────────────────────────────────────────────────┘${NC}"
     echo -e "  ${WHITE}Pembuat : ${GREEN}AlfiStoreID${NC}"
     echo -e "  ${WHITE}No WA   : ${GREEN}085223659782${NC}"
-    echo -e "  ${WHITE}Versi   : ${CYAN}2.9 (Fixed Edition)${NC}"
+    echo -e "  ${WHITE}Versi   : ${CYAN}3.0${NC}"
     echo ""
 }
 
@@ -245,7 +244,6 @@ if [ -d "$DIR" ]; then
     cd "$DIR" || exit 1
 fi
 
-# Panggil Konfigurasi GPU Wine
 source "$HOME/.config/alfi-wine-gpu.sh" 2>/dev/null
 
 if [ "$WINE_GPU_MODE" == "ON" ]; then
@@ -305,7 +303,7 @@ Exec=$exec_cmd
 Icon=$icon_name
 Terminal=false
 StartupNotify=true
-Categories=Utility;Application;AudioVideo;Player;
+Categories=Utility;Application;AudioVideo;Player;Network;
 EOF
 
     chmod +x "$desktop_file" 2>/dev/null
@@ -745,7 +743,7 @@ while true; do
     source "$WINE_GPU_FILE" 2>/dev/null
     clear
     echo -e "\e[1;36m┌───────────────────────────────────────────┐\e[0m"
-    echo -e "\e[1;36m│       \e[1;33m🚀 AlfiStoreID XFCE v2.9 🚀         \e[1;36m│\e[0m"
+    echo -e "\e[1;36m│       \e[1;33m🚀 AlfiStoreID XFCE v3.0 🚀         \e[1;36m│\e[0m"
     echo -e "\e[1;36m├───────────────────────────────────────────┤\e[0m"
     echo -e "\e[1;36m│\e[0m \e[1;32m1)\e[0m 🎮 Pilih Akselerasi GPU (XFCE & Wine)  \e[1;36m│\e[0m"
     echo -e "\e[1;36m│\e[0m \e[1;32m2)\e[0m 🔍 Cek Status Rendisi GPU              \e[1;36m│\e[0m"
@@ -785,37 +783,33 @@ while true; do
                 echo -e "\e[0;90m-----------------------------------------------------\e[0m"
                 printf " \e[1;35m1)\e[0m %-22s | %s\n" "Wine Environment (Box64)" "$(check_status hangover-wine)"
                 printf " \e[1;37m2)\e[0m %-22s | %s\n" "Firefox Browser" "$(check_status firefox)"
-                printf " \e[1;37m3)\e[0m %-22s | %s\n" "VS Code (Code-OSS)" "$(check_status code-oss)"
-                printf " \e[1;37m4)\e[0m %-22s | %s\n" "GIMP Photo Editor" "$(check_status gimp)"
-                printf " \e[1;37m5)\e[0m %-22s | %s\n" "Parole Media Player" "$(check_status parole)"
-                printf " \e[1;37m6)\e[0m %-22s | %s\n" "GLMark2 (Cek FPS GPU)" "$(check_status glmark2)"
-                printf " \e[1;37m7)\e[0m %-22s | %s\n" "Mesa Demos (GLXGears)" "$(check_status mesa-demos)"
+                printf " \e[1;37m3)\e[0m %-22s | %s\n" "Telegram Desktop" "$(check_status telegram-desktop)"
+                printf " \e[1;37m4)\e[0m %-22s | %s\n" "VS Code (Code-OSS)" "$(check_status code-oss)"
+                printf " \e[1;37m5)\e[0m %-22s | %s\n" "GIMP Photo Editor" "$(check_status gimp)"
+                printf " \e[1;37m6)\e[0m %-22s | %s\n" "Parole Media Player" "$(check_status parole)"
+                printf " \e[1;37m7)\e[0m %-22s | %s\n" "GLMark2 (Cek FPS GPU)" "$(check_status glmark2)"
                 printf " \e[1;37m8)\e[0m %-22s | %s\n" "Htop System Monitor" "$(check_status htop)"
                 printf " \e[1;37m9)\e[0m %-22s | %s\n" "Inkscape Vector" "$(check_status inkscape)"
                 printf " \e[1;37m10)\e[0m %-21s | %s\n" "Geany IDE Text Editor" "$(check_status geany)"
                 printf " \e[1;37m11)\e[0m %-21s | %s\n" "LibreOffice Suite" "$(check_status libreoffice)"
-                printf " \e[1;37m12)\e[0m %-21s | %s\n" "Python 3 Environment" "$(check_status python)"
-                printf " \e[1;37m13)\e[0m %-21s | %s\n" "Git Tools" "$(check_status git)"
-                printf " \e[1;37m14)\e[0m %-21s | %s\n" "Fastfetch SysInfo" "$(check_status fastfetch)"
+                printf " \e[1;37m12)\e[0m %-21s | %s\n" "Fastfetch SysInfo" "$(check_status fastfetch)"
                 echo -e "\e[0;90m-----------------------------------------------------\e[0m"
                 echo -e " \e[1;31m0)\e[0m Kembali ke Menu Utama"
-                read -p " Pilih aplikasi [0-14]: " app_choice
+                read -p " Pilih aplikasi [0-12]: " app_choice
 
                 case $app_choice in
                     1) manage_wine ;;
                     2) manage_app "Firefox Browser" "firefox" "firefox" "firefox" ;;
-                    3) manage_app "VS Code" "code-oss" "code-oss" "code-oss" ;;
-                    4) manage_app "GIMP Editor" "gimp" "gimp" "gimp" ;;
-                    5) manage_app "Parole Player" "parole" "parole" "parole" ;;
-                    6) manage_app "GLMark2" "glmark2" "glmark2" "glmark2" ;;
-                    7) manage_app "Mesa Demos" "mesa-demos" "glxgears" "utilities-terminal" ;;
+                    3) manage_app "Telegram Desktop" "telegram-desktop" "Telegram" "telegram" ;;
+                    4) manage_app "VS Code" "code-oss" "code-oss" "code-oss" ;;
+                    5) manage_app "GIMP Editor" "gimp" "gimp" "gimp" ;;
+                    6) manage_app "Parole Player" "parole" "parole" "parole" ;;
+                    7) manage_app "GLMark2" "glmark2" "glmark2" "glmark2" ;;
                     8) manage_app "Htop Monitor" "htop" "xfce4-terminal -e htop" "utilities-system-monitor" ;;
                     9) manage_app "Inkscape" "inkscape" "inkscape" "inkscape" ;;
                     10) manage_app "Geany Editor" "geany" "geany" "geany" ;;
                     11) manage_app "LibreOffice" "libreoffice" "libreoffice" "libreoffice-main" ;;
-                    12) manage_app "Python 3" "python" "xfce4-terminal -e python" "python" ;;
-                    13) manage_app "Git Tools" "git" "xfce4-terminal" "git" ;;
-                    14) manage_app "Fastfetch" "fastfetch" "xfce4-terminal -e 'fastfetch; read'" "utilities-terminal" ;;
+                    12) manage_app "Fastfetch" "fastfetch" "xfce4-terminal -e 'fastfetch; read'" "utilities-terminal" ;;
                     0) break ;;
                 esac
             done
@@ -830,39 +824,60 @@ while true; do
             echo -e "\e[1;36m═════════════════════════════════════════════════════\e[0m"
             echo -e "  \e[1;37mPembuat : \e[1;32mAlfiStoreID\e[0m"
             echo -e "  \e[1;37mNo WA   : \e[1;32m085223659782\e[0m"
-            echo -e "  \e[1;37mVersi   : \e[1;36m2.9 (Fixed Edition)\e[0m"
+            echo -e "  \e[1;37mVersi   : \e[1;36m3.0\e[0m"
             echo -e "\e[0;90m-----------------------------------------------------\e[0m"
-            echo -e "  \e[1;33m📌 FITUR UTAMA & CHANGELOG v2.9 (Fixed):\e[0m"
-            echo -e "  • \e[1;32m[Baru]\e[0m Pemisahan Opsi GPU XFCE vs GPU Wine secara Independen."
-            echo -e "  • \e[1;32m[Baru]\e[0m Switcher Turnip Zink+Mesa (ON/OFF) khusus Wine."
-            echo -e "  • \e[1;32m[Baru]\e[0m Dual Desktop Launcher Shortcut Switcher GPU Wine di XFCE."
-            echo -e "  • \e[1;32m[Baru]\e[0m Integrasi otomatis perintah system 'wine-turnip'."
-            echo -e "  • Deep Cache Cleaner (Wipe Wine, XFCE, & APT)."
+            echo -e "  \e[1;33m📌 FITUR UTAMA & CHANGELOG v3.0:\e[0m"
+            echo -e "  • \e[1;32m[Baru]\e[0m Penghapusan manager aplikasi yang tidak perlu."
+            echo -e "  • \e[1;32m[Baru]\e[0m Perbaiki daemon dan ada perintah penutup."
+            echo -e "  • \e[1;32m[Baru]\e[0m Penambahan telegram ke manager aplikasi."
+            echo -e "  • \e[1;32m[Baru]\e[0m Perbaiki shortcut telegram ketika di jalankan."
+            echo -e "  • \e[1;32m[Baru]\e[0m Fix Issue Android 15+ (Eksperimental)."
             echo -e "\e[1;36m═════════════════════════════════════════════════════\e[0m"
             read -p "Tekan Enter untuk kembali..." 
             ;;
         6) 
-            rm -rf /tmp/.X* /tmp/.X11-unix 2>/dev/null
-            source "$CONFIG_FILE" 2>/dev/null
-            export DISPLAY=:0
-            termux-x11 :0 -ac > /dev/null 2>&1 &
-            sleep 1.5
-            am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity > /dev/null 2>&1
-            sleep 1
-            eval $(dbus-launch --sh-syntax)
-            export DBUS_SESSION_BUS_ADDRESS
-            export DBUS_SESSION_BUS_PID
-            echo -e "\e[1;32m✓ Desktop aktif!\e[0m"
-            startxfce4 > /dev/null 2>&1
+            clear
+            echo -e "\e[1;36m┌──────────────────────────────────────────────────────────┐\e[0m"
+            echo -e "\e[1;36m│                \e[1;33m▶️  MEMULAI DESKTOP XFCE                  \e[1;36m│\e[0m"
+            echo -e "\e[1;36m└──────────────────────────────────────────────────────────┘\e[0m"
+            echo -e "\e[1;33m💡 INFORMASI MASALAH PERBAIKAN (Android 15+):\e[0m"
+            echo -e "\e[0;37m Apabila Termux:X11 mengalami \e[1;31mBlack Screen\e[0;37m, \e[1;31mCrash\e[0;37m, atau XFCE\e[0m"
+            echo -e "\e[0;37m gagal merender tampilan, disarankan untuk menggunakan mode\e[0m"
+            echo -e "\e[1;32m Split Screen (Layar Berbagi)\e[0;37m antara Termux dan Termux:X11\e[0m"
+            echo -e "\e[0;37m melalui Recent Apps sistem HP Anda untuk stabilitas penuh.\e[0m"
+            echo -e "\e[0;90m----------------------------------------------------------\e[0m"
+            echo -e "  \e[1;32m1)\e[0m Jalankan Desktop"
+            echo -e "  \e[1;31m2)\e[0m Kembali ke Menu Utama"
+            echo ""
+            read -p " Pilih opsi [1-2]: " run_opt
+            if [ "$run_opt" == "1" ]; then
+                rm -rf /tmp/.X* /tmp/.X11-unix 2>/dev/null
+                source "$CONFIG_FILE" 2>/dev/null
+                export DISPLAY=:0
+                termux-x11 :0 -ac > /dev/null 2>&1 &
+                sleep 1.5
+                am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity > /dev/null 2>&1
+                sleep 1
+                eval $(dbus-launch --sh-syntax)
+                export DBUS_SESSION_BUS_ADDRESS
+                export DBUS_SESSION_BUS_PID
+                echo -e "\e[1;32m✓ Desktop aktif!\e[0m"
+                startxfce4 > /dev/null 2>&1 &
+                echo ""
+                read -p "Tekan Enter untuk kembali ke menu..."
+            fi
             ;;
         7) 
             pkill -9 -f "termux.x11" 2>/dev/null
             pkill -9 -f "startxfce4" 2>/dev/null
-            pkill -9 -f "xfce" 2>/dev/null
-            pkill -9 -f "dbus" 2>/dev/null
+            pkill -9 -f "xfce4-session" 2>/dev/null
+            pkill -9 -f "xfwm4" 2>/dev/null
+            pkill -9 -f "xfdesktop" 2>/dev/null
+            pkill -9 -f "dbus-daemon" 2>/dev/null
             rm -rf /tmp/.X0-lock /tmp/.X11-unix 2>/dev/null
-            echo -e "\e[1;32mDesktop Dihentikan.\e[0m"
-            sleep 1
+            echo -e "\e[1;32m✓ Desktop Dihentikan.\e[0m"
+            echo ""
+            read -p "Tekan Enter untuk kembali ke menu..."
             ;;
         0) exit 0 ;;
     esac
@@ -871,8 +886,9 @@ ALFIEOF
 
     chmod +x /data/data/com.termux/files/usr/bin/fi-xfce.sh
     ln -sf /data/data/com.termux/files/usr/bin/fi-xfce.sh /data/data/com.termux/files/usr/bin/fi-xfce 2>/dev/null
-    echo -e "  ${GREEN}✓${NC} Berhasil membuat sistem menu fi-xfce.sh v2.9!"
+    echo -e "  ${GREEN}✓${NC} Berhasil membuat sistem menu fi-xfce.sh v3.0!"
 }
+
 
 # ============== BUAT SHORTCUT DESKTOP UTAMA ==============
 step_shortcuts() {
@@ -928,7 +944,7 @@ show_completion() {
 main() {
     show_banner
     echo -e "${WHITE}  Skrip ini akan menginstall Lingkungan Desktop Linux XFCE${NC}"
-    echo -e "${WHITE}  lengkap dengan Sistem Manager (fi-xfce.sh v2.9) by AlfiStoreID.${NC}"
+    echo -e "${WHITE}  lengkap dengan Sistem Manager (fi-xfce.sh v3.0) by AlfiStoreID.${NC}"
     echo ""
     echo -e "${YELLOW}  Tekan Enter untuk memulai, atau Ctrl+C untuk membatalkan...${NC}"
     read
