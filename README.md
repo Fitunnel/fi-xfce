@@ -1,63 +1,93 @@
-# 🚀 Fi-XFCE v2.9 - Termux XFCE4 & Wine Environment Installer
+🚀 Fi-XFCE v3.0
 
-Auto installer dan management tool untuk mengonfigurasi **XFCE Desktop Environment**, **Termux-X11**, dan **Wine (Hangover)** di Termux dengan kontrol akselerasi GPU interaktif.
+**Fi-XFCE** adalah automated installer & environment manager tingkat lanjut untuk menjalankan **XFCE4 Desktop Environment**, **Termux-X11 Display Server**, dan **Wine (Hangover + Box64)** di Termux secara efisien, responsif, dan mudah dikelola.
 
----
-
-## 📱 Kompatibilitas Versi Android
-
-- **Android 7.1.2 – Android 14**: Support Penuh (Dukungan optimal untuk sebagian besar arsitektur perangkat).
-- **Android 15+**: Support Terbatas / Eksperimental (Dukungan bergantung pada batasan keamanan API baru dan kebijakan sistem Android terbaru).
+Dilengkapi antarmuka CLI interaktif untuk mengelola akselerasi GPU, instalasi aplikasi desktop, dan pemeliharaan sistem hanya dari 1 panel kontrol.
 
 ---
 
-## ⚡ Supported GPU Drivers & Acceleration
+📌 Catatan Rilis v3.0
 
-Kamu bisa berganti-ganti driver akselerasi GPU (*GPU Switcher*) langsung dari CLI `fi-xfce` jika mengalami *crash*, *blackscreen*, atau ketidakcocokan hardware:
-
-1. **llvmpipe (Software Render - CPU)**
-   * Rendisi penuh via CPU. Sangat stabil & anti-crash di semua HP.
-2. **Turnip Zink + Mesa (Vulkan HW)**
-   * Khusus Snapdragon. Menggunakan akselerasi Vulkan Turnip bawaan.
-3. **Panfrost Native (Mali GPU)**
-   * Khusus Chipset MediaTek / Exynos / Kirin dengan GPU Mali.
-4. **Lavapipe (Vulkan CPU Emulator)**
-   * Emulasi Vulkan software layer berbasis CPU.
+- **Aplikasi Baru**: Integrasi Telegram Desktop di App Manager + perbaikan file launcher `.desktop`
+- **Manajemen Modul**: Optimasi App Manager. Utilitas non-esensial dihapus untuk hemat ruang
+- **Peningkatan Daemon**: Penanganan `process termination` lebih baik + perintah penutup daemon lebih bersih saat keluar desktop
+- **Kompatibilitas Android 15+ [Eksperimental]**: Penyesuaian skrip untuk meminimalisir black screen & isu alokasi memori
 
 ---
 
-## 🔗 Unduhan Aplikasi yang Dibutuhkan
+⚙️ Kompatibilitas Sistem & Driver
 
-Pastikan Anda menginstal aplikasi Termux dan Termux-X11 langsung dari repositori resmi GitHub (jangan gunakan versi Google Play Store karena sudah tidak diperbarui):
+📱 Dukungan Android
+| Versi Android | Status | Catatan |
+| --- | --- | --- |
+| Android 7.1.2 - 14 | ✅ Penuh | Stabil untuk ARM64 / x86_64 |
+| Android 15+ | 🧪 Eksperimental | Gunakan Split Screen Termux + Termux-X11 jika terjadi rendering stall |
 
-* **Termux App**: [Download Termux APK (GitHub Releases)](https://github.com/termux/termux-app/releases)
-* **Termux-X11 Companion**: [Download Termux-X11 APK (GitHub Releases)](https://github.com/termux/termux-x11/releases)
+🎮 Akselerasi Grafis - GPU Switcher
+Pilih rendering pipeline via menu `fi-xfce` sesuai hardware:
 
----
-
-## ✨ Fitur Utama
-
-- **XFCE4 Desktop Custom**: Tampilan desktop Linux yang ringan, responsif, dan siap pakai di Android.
-- **Wine / Hangover Support**: Menjalankan aplikasi dan game Windows (`.exe`) langsung dari Android.
-- **Multi-Driver GPU Switcher**: Pilih driver GPU (llvmpipe, Turnip Zink + Mesa, Panfrost Native, Lavapipe) secara terpisah untuk XFCE maupun Wine.
-- **Interactive App Manager**: Pasang, hapus, dan pin aplikasi populer (VS Code, GIMP, LibreOffice, dll.) ke desktop kapan saja via CLI `fi-xfce`.
-- **Deep Clean Utility**: Fitur pembersih otomatis untuk menghapus *cache* APT, log XFCE, dan berkas sementara Wine agar penyimpanan tidak membengkak.
-- **PulseAudio Native**: Konfigurasi audio stabil *out-of-the-box* tanpa *lag* atau suara pecah.
+- `llvmpipe` : CPU Software Render. Fallback paling stabil untuk semua device
+- `Turnip Zink + Mesa` : Vulkan HW. Khusus GPU Adreno Qualcomm Snapdragon
+- `Panfrost Native` : Native OpenGL. Khusus GPU Mali MediaTek / Exynos / Kirin
+- `Lavapipe` : Emulasi layer Vulkan berbasis software
 
 ---
 
-## 📋 Persyaratan Sistem
+🛠️ Persyaratan
 
-* **Penyimpanan Minimum**:
-  * **5 GB** bebas (instalasi dasar XFCE4).
-  * **20+ GB** bebas (jika menginstal paket Wine/Hangover lengkap).
-* **Chipset**: Snapdragon (Adreno) atau MediaTek/Exynos/Kirin (Mali).
+Pastikan Termux & Termux-X11 dari rilis GitHub resmi, bukan Play Store:
+
+- [Termux App](https://github.com/termux/termux-app/releases)
+- [Termux-X11 Companion](https://github.com/termux/termux-x11/releases)
+
+**Spesifikasi Minimum:**
+- **Penyimpanan**:
+    - 5 GB untuk instalasi standar XFCE4
+    - 20 GB+ jika pakai Wine / Hangover
+- **Arsitektur**: ARM64 `aarch64`
 
 ---
 
-## 📥 Cara Instalasi di Termux
+📥 Panduan Instalasi
 
-Jalankan satu baris perintah berikut di aplikasi **Termux**:
+Jalankan di terminal Termux:
 
 ```bash
-pkg update && pkg upgrade -y && pkg install wget -y && wget https://raw.githubusercontent.com/Fitunnel/fi-xfce/main/fi-xfceIns.sh && chmod +x fi-xfceIns.sh && ./fi-xfceIns.sh
+pkg update && pkg upgrade -y && pkg install wget -y && \
+wget https://raw.githubusercontent.com/Fitunnel/fi-xfce/main/fi-xfceIns.sh && \
+chmod +x fi-xfceIns.sh && \
+./fi-xfceIns.sh
+```
+
+🚀 Penggunaan
+
+Setelah instalasi selesai, buka environment manager kapan saja:
+```
+fi-xfce
+```
+
+✨ Fitur Unggulan
+
+- *Multi-GPU Switcher*: Konfigurasi GPU terpisah antara desktop XFCE4 dan lingkungan Wine
+- *Wine GPU Switcher Shortcuts*: Toggle ON/OFF Turnip Zink langsung dari desktop untuk akselerasi aplikasi Windows
+- *Auto-Pin Application Manager*: Instal/hapus aplikasi populer: VS Code, GIMP, LibreOffice, Telegram, dll + auto buat shortcut desktop
+- *Deep Clean Utility*: Bersihkan cache APT, log XFCE, thumbnail, dan file sementara Wine untuk hemat memori
+
+---
+
+👨‍💻 Developer
+
+- *Developer*: AlfiStoreID / Fitunnel
+- *Versi*: 3.0
+- *WhatsApp*: https://wa.me/6285223659782
+
+---
+
+⚠️ Disclaimer
+Skrip ini dimodifikasi untuk Termux. Penggunaan Wine/Hangover di Android masih eksperimental dan performa tergantung device. Gunakan dengan bijak.
+
+Jika suka project ini, kasih ⭐ di repo!
+
+Tinggal copy ke `README.md` di repo kamu.
+
+Mau sekalian aku tambahin badge `GitHub release`, `License`, atau screenshot demo biar lebih menarik?
