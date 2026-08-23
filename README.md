@@ -66,16 +66,6 @@ Setelah instalasi selesai, buka environment manager kapan saja:
 fi-xfce
 ```
 
-Salin ini untuk perbaikan masalah penginstalan lama atau tersendat: 
-```
-killall -9 apt apt-get dpkg 2>/dev/null
-rm -rf /data/data/com.termux/files/usr/var/lib/dpkg/lock*
-rm -rf /data/data/com.termux/files/usr/var/lib/apt/lists/lock
-rm -rf /data/data/com.termux/files/usr/var/cache/apt/archives/lock
-dpkg --configure -a
-pkg clean
-```
-
 ✨ Fitur Unggulan
 
 - *Multi-GPU Switcher*: Konfigurasi GPU terpisah antara desktop XFCE4 dan lingkungan Wine
@@ -92,6 +82,15 @@ export DISPLAY=:0
 Telegram
 ```
 
+- Tempel ini untuk perbaikan masalah penginstalan *fi-xfce* lama atau tersendat di termux: 
+```
+killall -9 apt apt-get dpkg 2>/dev/null
+rm -rf /data/data/com.termux/files/usr/var/lib/dpkg/lock*
+rm -rf /data/data/com.termux/files/usr/var/lib/apt/lists/lock
+rm -rf /data/data/com.termux/files/usr/var/cache/apt/archives/lock
+dpkg --configure -a
+pkg clean
+```
 ---
 
 👨‍💻 Developer
