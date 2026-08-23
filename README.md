@@ -84,7 +84,7 @@ pkg clean
 - *Deep Clean Utility*: Bersihkan cache APT, log XFCE, thumbnail, dan file sementara Wine untuk hemat memori
 
 ---
-**🔧PERBAIKAN**
+**🔧 PERBAIKAN**
 - Perbaikan Telegram Desktop error jalankan perintah ini di termux:
 ```
 pkg install qt6-qtwayland
