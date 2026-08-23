@@ -1,17 +1,17 @@
 #!/data/data/com.termux/files/usr/bin/bash
 #######################################################
-#  📱 AlfiStoreID XFCE Environment Installer v3.0
+#  📱 AlfiStoreID XFCE Environment Installer v3.1
 #  
-#  Fitur & Catatan Perubahan (v3.0):
+#  Fitur & Catatan Perubahan (v3.1):
+#  - Penghapusan Telegram Desktop dari manajer aplikasi
+#  - Penambahan Synaptic Package Manager (Manager Aplikasi GUI)
 #  - Penghapusan manager aplikasi yang tidak perlu
 #  - Perbaiki daemon dan ada perintah penutup
-#  - Penambahan telegram ke manager aplikasi
-#  - Perbaiki shortcut telegram ketika di jalankan
 #  - Fix Issue Android 15+ (Eksperimental)
 #  
 #  Pembuat : AlfiStoreID
 #  No WA   : 085223659782
-#  Versi   : 3.0
+#  Versi   : 3.1
 #######################################################
 
 # ============== KONFIGURASI ==============
@@ -85,12 +85,12 @@ install_pkg() {
 show_banner() {
     clear
     echo -e "${CYAN}┌──────────────────────────────────────────────────────────┐${NC}"
-    echo -e "${CYAN}│${WHITE}             🚀 AlfiStoreID XFCE v3.0 🚀                 ${CYAN}│${NC}"
+    echo -e "${CYAN}│${WHITE}             🚀 AlfiStoreID XFCE v3.1 🚀                 ${CYAN}│${NC}"
     echo -e "${CYAN}│${GRAY}        Desktop Environment Installer untuk Termux        ${CYAN}│${NC}"
     echo -e "${CYAN}└──────────────────────────────────────────────────────────┘${NC}"
     echo -e "  ${WHITE}Pembuat : ${GREEN}AlfiStoreID${NC}"
     echo -e "  ${WHITE}No WA   : ${GREEN}085223659782${NC}"
-    echo -e "  ${WHITE}Versi   : ${CYAN}3.0${NC}"
+    echo -e "  ${WHITE}Versi   : ${CYAN}3.1${NC}"
     echo ""
 }
 
@@ -303,7 +303,7 @@ Exec=$exec_cmd
 Icon=$icon_name
 Terminal=false
 StartupNotify=true
-Categories=Utility;Application;AudioVideo;Player;Network;
+Categories=Utility;Application;AudioVideo;Player;Network;System;
 EOF
 
     chmod +x "$desktop_file" 2>/dev/null
@@ -743,7 +743,7 @@ while true; do
     source "$WINE_GPU_FILE" 2>/dev/null
     clear
     echo -e "\e[1;36m┌───────────────────────────────────────────┐\e[0m"
-    echo -e "\e[1;36m│       \e[1;33m🚀 AlfiStoreID XFCE v3.0 🚀         \e[1;36m│\e[0m"
+    echo -e "\e[1;36m│       \e[1;33m🚀 AlfiStoreID XFCE v3.1 🚀         \e[1;36m│\e[0m"
     echo -e "\e[1;36m├───────────────────────────────────────────┤\e[0m"
     echo -e "\e[1;36m│\e[0m \e[1;32m1)\e[0m 🎮 Pilih Akselerasi GPU (XFCE & Wine)  \e[1;36m│\e[0m"
     echo -e "\e[1;36m│\e[0m \e[1;32m2)\e[0m 🔍 Cek Status Rendisi GPU              \e[1;36m│\e[0m"
@@ -783,7 +783,7 @@ while true; do
                 echo -e "\e[0;90m-----------------------------------------------------\e[0m"
                 printf " \e[1;35m1)\e[0m %-22s | %s\n" "Wine Environment (Box64)" "$(check_status hangover-wine)"
                 printf " \e[1;37m2)\e[0m %-22s | %s\n" "Firefox Browser" "$(check_status firefox)"
-                printf " \e[1;37m3)\e[0m %-22s | %s\n" "Telegram Desktop" "$(check_status telegram-desktop)"
+                printf " \e[1;37m3)\e[0m %-22s | %s\n" "Synaptic Package Manager" "$(check_status synaptic)"
                 printf " \e[1;37m4)\e[0m %-22s | %s\n" "VS Code (Code-OSS)" "$(check_status code-oss)"
                 printf " \e[1;37m5)\e[0m %-22s | %s\n" "GIMP Photo Editor" "$(check_status gimp)"
                 printf " \e[1;37m6)\e[0m %-22s | %s\n" "Parole Media Player" "$(check_status parole)"
@@ -800,7 +800,7 @@ while true; do
                 case $app_choice in
                     1) manage_wine ;;
                     2) manage_app "Firefox Browser" "firefox" "firefox" "firefox" ;;
-                    3) manage_app "Telegram Desktop" "telegram-desktop" "Telegram" "telegram" ;;
+                    3) manage_app "Synaptic Manager" "synaptic" "synaptic" "synaptic" ;;
                     4) manage_app "VS Code" "code-oss" "code-oss" "code-oss" ;;
                     5) manage_app "GIMP Editor" "gimp" "gimp" "gimp" ;;
                     6) manage_app "Parole Player" "parole" "parole" "parole" ;;
@@ -824,13 +824,13 @@ while true; do
             echo -e "\e[1;36m═════════════════════════════════════════════════════\e[0m"
             echo -e "  \e[1;37mPembuat : \e[1;32mAlfiStoreID\e[0m"
             echo -e "  \e[1;37mNo WA   : \e[1;32m085223659782\e[0m"
-            echo -e "  \e[1;37mVersi   : \e[1;36m3.0\e[0m"
+            echo -e "  \e[1;37mVersi   : \e[1;36m3.1\e[0m"
             echo -e "\e[0;90m-----------------------------------------------------\e[0m"
-            echo -e "  \e[1;33m📌 FITUR UTAMA & CHANGELOG v3.0:\e[0m"
-            echo -e "  • \e[1;32m[Baru]\e[0m Penghapusan manager aplikasi yang tidak perlu."
+            echo -e "  \e[1;33m📌 FITUR UTAMA & CHANGELOG v3.1:\e[0m"
+            echo -e "  • \e[1;32m[Baru]\e[0m Penghapusan Telegram Desktop dari Manajer Aplikasi."
+            echo -e "  • \e[1;32m[Baru]\e[0m Penambahan Synaptic Package Manager (Installer GUI Aplikasi)."
+            echo -e "  • \e[1;32m[Baru]\e[0m Pembersihan sisa paket & manager aplikasi yang tidak perlu."
             echo -e "  • \e[1;32m[Baru]\e[0m Perbaiki daemon dan ada perintah penutup."
-            echo -e "  • \e[1;32m[Baru]\e[0m Penambahan telegram ke manager aplikasi."
-            echo -e "  • \e[1;32m[Baru]\e[0m Perbaiki shortcut telegram ketika di jalankan."
             echo -e "  • \e[1;32m[Baru]\e[0m Fix Issue Android 15+ (Eksperimental)."
             echo -e "\e[1;36m═════════════════════════════════════════════════════\e[0m"
             read -p "Tekan Enter untuk kembali..." 
@@ -886,7 +886,7 @@ ALFIEOF
 
     chmod +x /data/data/com.termux/files/usr/bin/fi-xfce.sh
     ln -sf /data/data/com.termux/files/usr/bin/fi-xfce.sh /data/data/com.termux/files/usr/bin/fi-xfce 2>/dev/null
-    echo -e "  ${GREEN}✓${NC} Berhasil membuat sistem menu fi-xfce.sh v3.0!"
+    echo -e "  ${GREEN}✓${NC} Berhasil membuat sistem menu fi-xfce.sh v3.1!"
 }
 
 
@@ -944,7 +944,7 @@ show_completion() {
 main() {
     show_banner
     echo -e "${WHITE}  Skrip ini akan menginstall Lingkungan Desktop Linux XFCE${NC}"
-    echo -e "${WHITE}  lengkap dengan Sistem Manager (fi-xfce.sh v3.0) by AlfiStoreID.${NC}"
+    echo -e "${WHITE}  lengkap dengan Sistem Manager (fi-xfce.sh v3.1) by AlfiStoreID.${NC}"
     echo ""
     echo -e "${YELLOW}  Tekan Enter untuk memulai, atau Ctrl+C untuk membatalkan...${NC}"
     read
