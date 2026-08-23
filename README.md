@@ -1,4 +1,4 @@
-🚀 Fi-XFCE v3.0
+🚀 Fi-XFCE v3.1
 
 **Fi-XFCE** adalah automated installer & environment manager tingkat lanjut untuk menjalankan **XFCE4 Desktop Environment**, **Termux-X11 Display Server**, dan **Wine (Hangover + Box64)** di Termux secara efisien, responsif, dan mudah dikelola.
 
@@ -6,9 +6,9 @@ Dilengkapi antarmuka CLI interaktif untuk mengelola akselerasi GPU, instalasi ap
 
 ---
 
-📌 Catatan Rilis v3.0
+📌 Catatan Rilis v3.1
 
-- **Aplikasi Baru**: Integrasi Telegram Desktop di App Manager + perbaikan file launcher `.desktop`
+- **Aplikasi Baru**: Synaptic di App Manager
 - **Manajemen Modul**: Optimasi App Manager. Utilitas non-esensial dihapus untuk hemat ruang
 - **Peningkatan Daemon**: Penanganan `process termination` lebih baik + perintah penutup daemon lebih bersih saat keluar desktop
 - **Kompatibilitas Android 15+ [Eksperimental]**: Penyesuaian skrip untuk meminimalisir black screen & isu alokasi memori
@@ -80,7 +80,7 @@ pkg clean
 
 - *Multi-GPU Switcher*: Konfigurasi GPU terpisah antara desktop XFCE4 dan lingkungan Wine
 - *Wine GPU Switcher Shortcuts*: Toggle ON/OFF Turnip Zink langsung dari desktop untuk akselerasi aplikasi Windows
-- *Auto-Pin Application Manager*: Instal/hapus aplikasi populer: VS Code, GIMP, LibreOffice, Telegram, dll + auto buat shortcut desktop
+- *Auto-Pin Application Manager*: Instal/hapus aplikasi populer: VS Code, GIMP, LibreOffice, Synaptic, dll + auto buat shortcut desktop
 - *Deep Clean Utility*: Bersihkan cache APT, log XFCE, thumbnail, dan file sementara Wine untuk hemat memori
 
 ---
