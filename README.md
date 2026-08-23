@@ -88,7 +88,7 @@ pkg clean
 👨‍💻 Developer
 
 - *Developer*: AlfiStoreID / Fitunnel
-- *Versi*: 3.0
+- *Versi*: 3.1
 - *WhatsApp*: https://wa.me/6285223659782
 
 ---
