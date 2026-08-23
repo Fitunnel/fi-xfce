@@ -82,7 +82,7 @@ export DISPLAY=:0
 Telegram
 ```
 
-- Tempel ini untuk perbaikan masalah penginstalan *fi-xfce* lama atau tersendat di termux: 
+- Tempel ini untuk perbaikan masalah penginstalan `fi-xfce` lama atau tersendat di termux: 
 ```
 killall -9 apt apt-get dpkg 2>/dev/null
 rm -rf /data/data/com.termux/files/usr/var/lib/dpkg/lock*
