@@ -261,6 +261,8 @@ if [ "$WINE_GPU_MODE" == "ON" ]; then
     export MESA_NO_ERROR=1
     export MESA_GL_VERSION_OVERRIDE=4.6
     export MESA_GLES_VERSION_OVERRIDE=3.2
+    export MESA_VK_WSI_PRESENT_MODE=immediate
+    export ZINK_DESCRIPTORS=lazy
 else
     unset VK_DRIVER_FILES
     unset VK_ICD_FILENAMES
@@ -270,6 +272,8 @@ else
     unset MESA_NO_ERROR
     unset MESA_GL_VERSION_OVERRIDE
     unset MESA_GLES_VERSION_OVERRIDE
+    unset MESA_VK_WSI_PRESENT_MODE
+    unset ZINK_DESCRIPTORS
 fi
 
 wine "$FILE"
@@ -685,6 +689,8 @@ export MESA_GLES_VERSION_OVERRIDE=3.2
 export GALLIUM_DRIVER=zink
 export MESA_LOADER_DRIVER_OVERRIDE=zink
 export TU_DEBUG=noconform
+export MESA_VK_WSI_PRESENT_MODE=immediate
+export ZINK_DESCRIPTORS=lazy
 export ALFI_DRIVER_NAME="Turnip Zink + Mesa"
 CONF
                     ;;
