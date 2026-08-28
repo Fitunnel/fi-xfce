@@ -157,9 +157,15 @@ step_desktop() {
     echo -e "${PURPLE}[Langkah ${CURRENT_STEP}/${TOTAL_STEPS}] Menginstall XFCE4 Desktop...${NC}"
     echo ""
     install_pkg "xfce4" "Desktop XFCE4"
+    install_pkg "xfce4-goodies" "XFCE4 Goodies"
     install_pkg "xfce4-terminal" "Terminal XFCE4"
+    install_pkg "xfce4-whiskermenu-plugin" "Whisker Menu Plugin"
+    install_pkg "xfce4-notifyd" "XFCE Notification Daemon"
     install_pkg "thunar" "Manajer Berkas Thunar"
     install_pkg "mousepad" "Editor Teks Mousepad"
+    install_pkg "imagemagick" "ImageMagick Utilities"
+    install_pkg "gtk3" "GTK+ 3 Library Engine"
+    install_pkg "gtk4" "GTK+ 4 Library Engine"
 }
 
 step_gpu() {
